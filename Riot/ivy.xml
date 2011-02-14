@@ -27,7 +27,11 @@
 	    <dependency org="postgresql" name="jdbc3" rev="8.1-407" conf="postgresql->default" />
 	    <dependency org="mysql" name="mysql-connector-java" rev="5.0.5" conf="mysql->default" />
 		<dependency org="org.springframework.webflow" name="org.springframework.webflow"
-			rev="2.0.9.RELEASE" conf="runtime->runtime" />    
+			rev="2.0.9.RELEASE" conf="runtime->runtime" />
+        <dependency org="ognl" name="ognl" rev="3.0" transitive="false">
+            <artifact name="ognl" type="jar"/>
+        </dependency>
+ 			
     </dependencies>
 
 </ivy-module>

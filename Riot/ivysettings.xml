@@ -28,6 +28,7 @@
 		<chain name="default" returnFirst="true">
 			<resolver ref="local" />
 			<resolver ref="riotfamily" />
+			<ibiblio name="central" m2compatible="true"/>
 			<resolver ref="com.springsource.repository.bundles.release" />
 			<resolver ref="com.springsource.repository.bundles.external" />
 		</chain>
