@@ -18,6 +18,14 @@
 	  - See http://incubator.apache.org/ivy/doc/ivyfile/dependencies.html
 	  -->
     <dependencies>
+    	<!-- see http://theholyjava.wordpress.com/2010/12/23/ivy-resolve-downloads-but-ignores-some-artifacts-though-not-modules/
+    	 -->
+        <dependency org="org.apache.tiles" name="tiles-freemarker" rev="2.2.2"
+        	conf="runtime->master" force="true"/>
+        <dependency org="org.apache.tiles" name="tiles-freemarker" rev="2.2.2"
+        	conf="src->sources" force="true"/>
+        <dependency org="org.apache.tiles" name="tiles-template" rev="2.2.2"
+        	conf="runtime" force="true"/>
 	    <dependency org="riotfamily" name="riot-pages" rev="8.0+" conf="runtime->runtime;src->src" />
         <dependency org="riotfamily" name="riot-statistics" rev="8.0+" conf="runtime->runtime;src->src" />
         <dependency org="riotfamily" name="riot-dbmsgsrc" rev="8.0+" conf="runtime->runtime;src->src" />

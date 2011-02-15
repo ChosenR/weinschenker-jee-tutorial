@@ -15,18 +15,41 @@ import org.riotfamily.website.cache.TagCacheItems;
 @TagCacheItems
 public class Pet extends ActiveRecordSupport {
 
+	/**
+	 * The serialVersionUID.
+	 */
+	private static final long serialVersionUID = 6581392200053996588L;
+
+	/**
+	 * The pet's name.
+	 */
 	private String name;
 	
+	/**
+	 * The image.
+	 */
 	private RiotImage image;
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
+	/**
+	 * 
+	 * @param name
+	 */
+	public final void setName(final String name) {
 		this.name = name;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public static List<Pet> loadAll() {
 		return find("from Pet");
 	}
@@ -37,7 +60,7 @@ public class Pet extends ActiveRecordSupport {
 		return image;
 	}
 
-	public void setImage(RiotImage image) {
+	public void setImage(final RiotImage image) {
 		this.image = image;
 	}
 	

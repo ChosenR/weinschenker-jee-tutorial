@@ -1,4 +1,6 @@
-<project name="Riot" default="webapp" xmlns:ivy="antlib:org.apache.ivy.ant">
+<project name="Riot" default="webapp" 
+		xmlns:ivy="antlib:org.apache.ivy.ant" 
+		xmlns:cs="antlib:com.puppycrawl.tools.checkstyle">
 
 	<!--
 	  - File and directory names
@@ -13,7 +15,9 @@
 		<classpath>
 			<pathelement path="${tomcat.home}/server/lib/catalina-ant.jar" />
 		</classpath>
-	</taskdef>	
+	</taskdef>
+	<taskdef resource="checkstyletask.properties"
+	         classpath="${cs.lib}"/>
 
 	<!-- Location of the project's source and resource files -->
 	<property name="src.dir" value="src" />
@@ -141,7 +145,7 @@
 	  - Compiles the java sources to ${build.classes.dir}. Additionally all
 	  - files matched by the jar.resource.patterns patternset are copied.
 	 -->
-	<target name="compile" depends="init"
+	<target name="compile" depends="init, checkstyle"
 			description="Compiles the project's Java sources">
 		<mkdir dir="${build.classes.dir}" />
 		<javac srcdir="${src.dir}" destdir="${build.classes.dir}" deprecation="on" debug="on">
@@ -154,6 +158,13 @@
 		</copy>
 	</target>
 
+	<target name="checkstyle">
+		<checkstyle config="${cs.config}">
+		  <fileset dir="${src.dir}" includes="**/*.java"/>
+		  <formatter type="plain"/>
+		  <formatter type="xml" toFile="${build.dir}/checkstyle_errors.xml"/>
+		</checkstyle>
+	</target>
 	<!--
 	  - Copys the compiled classes (and merged properties) to WEB-INF/classes.
 	 -->

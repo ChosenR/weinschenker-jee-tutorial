@@ -8,25 +8,25 @@ import org.riotfamily.media.model.RiotImage;
 import org.riotfamily.riot.hibernate.interceptor.EntityListener;
 
 public class PetListener implements EntityListener<Pet> {
-	
+
 	private Thumbnailer thumbnailer;
-	
-	public PetListener(Thumbnailer thumbnailer) {
+
+	public PetListener(final Thumbnailer thumbnailer) {
 		this.thumbnailer = thumbnailer;
 	}
 
-	public void onSave(Pet pet) throws IOException {
+	public void onSave(final Pet pet) throws IOException {
 		updateThumbnail(pet);
-	}
-	
-	public void onUpdate(Pet pet) throws IOException {
-		updateThumbnail(pet);
-	}
-	
-	public void onDelete(Pet pet) {
 	}
 
-	private void updateThumbnail(Pet pet) throws IOException {
+	public void onUpdate(final Pet pet) throws IOException {
+		updateThumbnail(pet);
+	}
+
+	public void onDelete(final Pet pet) {
+	}
+
+	private void updateThumbnail(final Pet pet) throws IOException {
 		RiotImage img = pet.getImage();
 		if (img != null) {
 			if (img.get("thumbnail") == null) {
@@ -34,8 +34,8 @@ public class PetListener implements EntityListener<Pet> {
 			}
 		}
 	}
-	
-	private RiotImage createThumbnail(RiotImage img) throws IOException {
+
+	private RiotImage createThumbnail(final RiotImage img) throws IOException {
 		RiotImage thumb = new RiotImage();
 		File source = img.getFile();
 		File dest = thumb.createEmptyFile(img.getFileName());
