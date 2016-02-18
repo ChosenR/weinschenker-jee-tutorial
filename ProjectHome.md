@@ -1,0 +1,1 @@
+Showcase for maven, spring, hibernate and other java open-source projects.
